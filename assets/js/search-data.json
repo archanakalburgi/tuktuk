@@ -27,6 +27,17 @@
   
 
   
+      ,"page2": {
+          "title": "CodeChallenges",
+          "content": "Redirecting to Code Challenges Page... Redirecting to Code Challenges Page...",
+          "url": "https://archanakalburgi.github.io/tuktuk/_pages/code_challenges.html",
+          "relUrl": "/_pages/code_challenges.html",
+          "date": ""
+      }
+      
+  
+
+  
 
   
   
@@ -48,7 +59,7 @@
   
 
   
-      ,"page10": {
+      ,"page11": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://archanakalburgi.github.io/tuktuk/robots.txt",
