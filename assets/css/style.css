@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
 .highlight .c { color: #998; font-style: italic; }
 
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
@@ -484,7 +485,7 @@ pre code { font-size: 15px !important; }
 
 p code { font-size: 19px; }
 
-.site-header { background-color: #fffeea; }
+.site-header { background-color: #fffeea; font-family: 'Mochiy Pop P One', sans-serif; }
 
 .page-content { background: linear-gradient(#fffeea, #B7E8EB); }
 
