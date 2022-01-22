@@ -9,9 +9,11 @@
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
 .site-header {
   background-color: #fffeea;
+  font-family: 'Mochiy Pop P One', sans-serif;
 }
 
 .page-content{
