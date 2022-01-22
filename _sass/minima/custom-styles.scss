@@ -9,3 +9,15 @@
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
+
+.site-header {
+  background-color: #fffeea;
+}
+
+.page-content{
+  background: linear-gradient(rgba(255,254,234,1),#B7E8EB);
+}
+
+.site-footer {
+    border-top: 0px solid #e8e8e8;
+}
