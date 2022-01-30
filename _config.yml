@@ -42,7 +42,7 @@ minima:
     twitter: archanakalburgi
     github: archanakalburgi
     linkedin: archana-kalburgi
-    youtube-channel: UCLa8-5kcuDW7grFZWn25O3A
+    youtube_channel: UCLa8-5kcuDW7grFZWn25O3A
 
 # Set this to true to get LaTeX math equation support
 use_math: 
