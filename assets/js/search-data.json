@@ -50,6 +50,17 @@
 
   
       ,"page2": {
+          "title": "About",
+          "content": "I am Archana Kalburgi, a graduate student at Stevens Institute of Technology. I am pursuing masters in Computer science, specializing in Machine Learning. . I have currently invested my time in learning data structure and algorithms and how to tackle interview coding questions as I am looking for summer-2022 internship and full-time opportunities. You can find my learning related to the same in some of my blog posts and here. Hope you find them interesting. . Machine Learning: Fundamental and applications, Knowledge Discovery and Data Mining, Python Programming are the courses that I have already completed and I am looking forward to take on Deep Learning, Introduction to Deep Learning and Business Applications and Web Mining courses. . I have gained deeper insights into machine learning algorithms through course project works, which can be accessed through the following links, . Job change prediction | Sentiment analysis of IMDB movie reviews | . Some of the other interesting projects that I have worked on include . Built MLE classifier | Built KNN classifier | Reduced dimension of data using principal component analysis(PCA) | Reduced dimension of data using fisher discriminant analysis(FDA) | Identified misclassified labels using perceptron | . If you have any suggestions or would like to get in touch with me please feel free to message me on my linkedin . Email: archanakalburgi@gmail.com .",
+          "url": "https://archanakalburgi.github.io/tuktuk/about/",
+          "relUrl": "/about/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page3": {
           "title": "CodeChallenges",
           "content": "Redirecting to Code Challenges Page... Redirecting to Code Challenges Page...",
           "url": "https://archanakalburgi.github.io/tuktuk/_pages/code_challenges.html",
@@ -81,7 +92,7 @@
   
 
   
-      ,"page11": {
+      ,"page12": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://archanakalburgi.github.io/tuktuk/robots.txt",
