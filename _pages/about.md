@@ -4,7 +4,10 @@ title: About Me
 permalink: /about/
 ---
 
-![](/images/me.png)
+![]({{site.baseurl}}/images/me.png)
+
+----
+
 
 I am **Archana Kalburgi**, a graduate student at **Stevens Institute of Technology**. I am pursuing masters in Computer science, specializing in **Machine Learning**.
 
