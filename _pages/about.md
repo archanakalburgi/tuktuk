@@ -4,9 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-<p align="center">
-  <img width="500" height="460" src="/images/me.png">
-</p>
+![]({{site.baseurl}}/images/me.png)
 
 ----
 
