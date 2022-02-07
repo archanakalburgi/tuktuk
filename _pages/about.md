@@ -9,7 +9,8 @@ permalink: /about/
 ----
 
 
-I am **Archana Kalburgi**, a graduate student at **Stevens Institute of Technology**. I am pursuing masters in Computer science, specializing in **Machine Learning**.
+Hi there!!!
+I am  **Archana Kalburgi**, a graduate student at **Stevens Institute of Technology**, pursuing masters in Computer science, specializing in **Machine Learning**.
 
 I have currently invested my time in learning data structure and algorithms and how to tackle interview coding questions as I am looking for summer-2022 internship and full-time opportunities. You can find my learning related to the same in some of my blog posts and [here](https://github.com/archanakalburgi/Algorithms). Hope you find them interesting. 
 
@@ -28,6 +29,6 @@ Some of the other interesting projects that I have worked on include
 
 If you have any suggestions or would like to get in touch with me please feel free to message me on my [linkedin](https://www.linkedin.com/in/archana-kalburgi/) 
 
-PS: I can stop gazing at sceneries, just like in the pic ☺️
+PS: I can't stop gazing at sceneries, just like in the pic ☺️
 
 Email: archanakalburgi@gmail.com 
