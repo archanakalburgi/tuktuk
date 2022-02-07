@@ -4,11 +4,6 @@ title: About Me
 permalink: /about/
 ---
 
-![]({{site.baseurl}}/images/my_pic.png)
-
-----
-
-
 Hi there!!!
 I am  **Archana Kalburgi**, a graduate student at **Stevens Institute of Technology**, pursuing masters in Computer science, specializing in **Machine Learning**.
 
@@ -28,7 +23,5 @@ Some of the other interesting projects that I have worked on include
 - [Identified misclassified labels using perceptron](https://github.com/archanakalburgi/my_coursework_stevens/blob/main/CS559/ML_Assign3/Q4_Perceptron.ipynb)
 
 If you have any suggestions or would like to get in touch with me please feel free to message me on my [linkedin](https://www.linkedin.com/in/archana-kalburgi/) 
-
-PS: I can't stop gazing at sceneries, just like in the pic ☺️
 
 Email: archanakalburgi@gmail.com 
