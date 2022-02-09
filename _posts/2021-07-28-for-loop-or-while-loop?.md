@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "Choosing the loops!"
-date:   2021-07-28 
+date: 2021-07-28 
+image: images/IMG_0441.png
 ---
 Based on my understanding
 <p align="center">
