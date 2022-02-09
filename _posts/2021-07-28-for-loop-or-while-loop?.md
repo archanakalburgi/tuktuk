@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Choosing the loops!"
+description: A short article explaining how one can choose what loop to use during programming.
 date: 2021-07-28 
 image: images/IMG_0441.png
 ---
