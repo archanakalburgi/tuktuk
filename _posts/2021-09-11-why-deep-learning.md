@@ -16,7 +16,7 @@ One of the questions I have been trying to answer is why deep learning algorithm
 
 There are numerous ML algorithms, for a better understanding we can classify them under three themes.
 1. Mathematical theme
-    - Algorithms based on probability
+    - Algorithms based on probability   
         - Example: Maximum likelihood classification
     - Algorithms based on distance
         - Example: knn
