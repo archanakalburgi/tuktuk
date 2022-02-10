@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why deep learning? 
-description: The purpose of this article is to understand why one might choose deep learning algorithms over the machine learning algorithms 
+description: The purpose of this article is to understand why one might choose deep learning algorithms over the machine learning algorithms.
 date: 2021-09-21
 image: images/IMG_0489.png
 ---

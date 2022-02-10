@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Perceptron to Multilayer Neural Network 
+description: In this article I am exploring how we input the data to a neural network.
 date: 2021-11-19
+image: images/IMG_0440.png
 ---
 
 <p align="center">
