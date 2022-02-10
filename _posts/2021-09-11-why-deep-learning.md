@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Why deep learning? 
+description: The purpose of this article is to understand why one might choose deep learning algorithms over the machine learning algorithms 
 date: 2021-09-21
+image: images/IMG_0489.png
 ---
 
 One of the questions I have been trying to answer is why deep learning algorithms over traditional machine learning algorithms. What can we accomplish with deep learning algorithms that we can't with machine learning algorithms. After reflecting on what I had covered while studying Machine Learning(ML) and what I would cover in a deep learning course I was able to answer the question. 
