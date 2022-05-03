@@ -12,6 +12,8 @@ I have currently invested my time in learning data structure and algorithms and 
 Machine Learning: Fundamental and applications, Knowledge Discovery and Data Mining, Python Programming are the courses that I have already completed and I am looking forward to take on Deep Learning, Introduction to Deep Learning and Business Applications and Web Mining courses. 
 
 I have gained deeper insights into machine learning algorithms through course project works, which can be accessed through the following links,
+- [Profile matcher](https://github.com/archanakalburgi/profile_matcher)
+- [Government policies and public sentiments](https://github.com/archanakalburgi/govt_policies_public_sentiments)
 - [Job change prediction](https://github.com/archanakalburgi/job_change_prediction_project)
 - [Sentiment analysis of IMDB movie reviews](https://github.com/archanakalburgi/sentiment_analysis_imdb)
 
