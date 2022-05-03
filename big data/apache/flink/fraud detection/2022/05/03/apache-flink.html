@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Apache Flink | TukTuk</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Apache Flink" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Dynamic fraud detection by financial institutions using Flink" />
+<meta property="og:description" content="Dynamic fraud detection by financial institutions using Flink" />
+<link rel="canonical" href="https://archanakalburgi.github.io/tuktuk/big%20data/apache/flink/fraud%20detection/2022/05/03/apache-flink.html" />
+<meta property="og:url" content="https://archanakalburgi.github.io/tuktuk/big%20data/apache/flink/fraud%20detection/2022/05/03/apache-flink.html" />
+<meta property="og:site_name" content="TukTuk" />
+<meta property="og:image" content="https://archanakalburgi.github.io/tuktuk/images/flink/cover.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-03T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://archanakalburgi.github.io/tuktuk/images/flink/cover.png" />
+<meta property="twitter:title" content="Apache Flink" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-03T00:00:00-05:00","datePublished":"2022-05-03T00:00:00-05:00","description":"Dynamic fraud detection by financial institutions using Flink","headline":"Apache Flink","image":"https://archanakalburgi.github.io/tuktuk/images/flink/cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://archanakalburgi.github.io/tuktuk/big%20data/apache/flink/fraud%20detection/2022/05/03/apache-flink.html"},"url":"https://archanakalburgi.github.io/tuktuk/big%20data/apache/flink/fraud%20detection/2022/05/03/apache-flink.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/tuktuk/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://archanakalburgi.github.io/tuktuk/feed.xml" title="TukTuk" /><link rel="shortcut icon" type="image/x-icon" href="/tuktuk/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><style>
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+  .site-title{
+    color: #006ad1;
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+  }
+</style>
+<header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/tuktuk/">TukTuk</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/tuktuk/about/">About Me</a><a class="page-link" href="/tuktuk/_pages/code_challenges.html">CodeChallenges</a><a class="page-link" href="/tuktuk/search/">Search</a><a class="page-link" href="/tuktuk/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Apache Flink</h1><p class="page-description">Dynamic fraud detection by financial institutions using Flink</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-03T00:00:00-05:00" itemprop="datePublished">
+        May 3, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/tuktuk/categories/#Big data">Big data</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/tuktuk/categories/#Apache">Apache</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/tuktuk/categories/#Flink">Flink</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/tuktuk/categories/#Fraud detection">Fraud detection</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#abstract">Abstract</a></li>
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#building-blocks-of-a-streaming-application">Building blocks of a streaming application</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#streams">Streams</a></li>
+<li class="toc-entry toc-h3"><a href="#time">Time</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#advantages-of-flink">Advantages of Flink</a></li>
+<li class="toc-entry toc-h2"><a href="#fraud-detection-system-using-flink">Fraud Detection System Using Flink</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#support-various-types-of-models">Support various types of models</a></li>
+<li class="toc-entry toc-h3"><a href="#architecture">Architecture</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#stateless-to-stateful">Stateless to stateful</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#stream">Stream</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#conclusions">Conclusions</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul><h2 id="abstract">
+<a class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h2>
+
+<p>Flink, part of the Apache Flink project, is an open source platform for stateful calculations using massive, <strong>unbounded and bounded streams</strong> of data. Flink’s main advantages are that it can run on a wide range of cluster environments, perform computations in memory, and run on a variety of platforms. Data can be processed as both bounded and unbounded streams. Unbounded data streams are the data streams that do not have a defined end but have a definite start. After termination the data obtained is not the same as when it was generated. Continuous processing must be done on unbounded streams, i.e., once they are ingested, they should be handled. Because all input data is unbounded, it is not a good idea to wait for the entire data to arrive. Unbounded data processing often requires that events are ingested in a specific order, probably in the order in which they occurred, to be able to determine the completeness of the result. On the contrary Bounded streams have a defined start and end. Data from bounded streams can be processed by ingesting all of it before any computations. For bounded streams, ordered ingestion is not necessary because they can be sorted. <br>
+In this article I will try to explore how Flink can be incorporated by financial institutions in their dynamic fraud detection mechanisms.</p>
+
+<h2 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The number of data collected by companies has been increasing over the past few years. Taking advantage of this huge amount of data that is being collected, data scientists can generate business value. Models can be trained based on the historical data that is stored on HDFS and later these models can be scored based on the accuracy.<br>
+In case of financial institutions, the fraudulent transactions have to be blocked immediately to prevent damages to the institutions or customers for which the models responsible for detecting frauds are required to be scored in real time.<br>
+The real challenge is to add efficient models on a running system without downtime. In this paper I am going to discuss the implementation of a real time streaming analytics  platform that also allows to dynamically change the behavior of the stateful Flink application. This will result will an environment that provides the users a DSL  which can be used to dynamically stream the new models into the Flink</p>
+
+<h2 id="building-blocks-of-a-streaming-application">
+<a class="anchor" href="#building-blocks-of-a-streaming-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building blocks of a streaming application</h2>
+
+<p>The efficiency of any streaming application is determined by how well the application framework can control streams, state and time.</p>
+
+<h3 id="streams">
+<a class="anchor" href="#streams" aria-hidden="true"><span class="octicon octicon-link"></span></a>Streams</h3>
+
+<p>Stream data is the data that consists of a stream of logs, events or any record along with the time as they happen. Stream data can be categorized based on its properties.<br>
+Major categories include bounded and unbounded streams, real-time and recorded. Flink framework is designed to handle any kind of stream data, it has advanced features to process unbounded data and operators to process bounded streams. Flink applications are also efficient in processing file systems both in real time or for later processing.<br>
+Some of the examples of such streams are:</p>
+<ul>
+  <li>Credit card transactions</li>
+  <li>Sensor measurements</li>
+  <li>Machine logs</li>
+  <li>User interactions on website</li>
+  <li>Mobile applications</li>
+</ul>
+
+<h3 id="time">
+<a class="anchor" href="#time" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time</h3>
+
+<p>Events are produced at a specific point and are not regular which makes tream applications dependent on the time semantics. Measuring time becomes an important feature for applications that perform operations like windows operation including all or any aggregation functions, pattern detection or time bases join operations. In such functions keeping track of the event-time and processing time is crucial for reliable results.<br>
+Flink makes it possible to keep such track relates to time because of its powerful time related features, which are event-time mode, watermark support, late data handling and processing time mode.</p>
+
+<h2 id="advantages-of-flink">
+<a class="anchor" href="#advantages-of-flink" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advantages of Flink</h2>
+
+<p>Flink can be used to develop a wide range of applications since integrating flink with any of the cluster resource managers such as Yarn, Apache, Hadoop, Kubernetes or Mesos requires minimal effort. Flink can also be set up to operate as a standalone cluster manager. The resources specific mode in the flink allows it to interact with any of the resource managers in an idiomatic way removing the barrier of the varied programming language. The application resources required are identified by the flink automatically by analyzing the configuration of the application.<br>
+Most important feature of flink is it’s failure mechanisms, flink handles failure by replacing the failed container with a new container,Scalable stateful applications can be developed using flink, the status of the state is updated and controlled using REST api. Flink also has an inbuilt checkpoint system.<br>
+These features make flink a better choice for developing fraud detection applications, anomaly detection particularly in video streaming applications. Broader use cases include developing event-driven applications, data analytics applications and data pipeline applications.</p>
+
+<h2 id="fraud-detection-system-using-flink">
+<a class="anchor" href="#fraud-detection-system-using-flink" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fraud Detection System Using Flink</h2>
+
+<p>A fraud detection system must be able to support various types of machine learning models and be able to score these models in real time.  A successful fraud detection system must have one single codebase so that the solution can be deployed in different countries and have flexible decoupled architectures. The key part is being able to dynamically change the models on a running system i.e in any new fraud scenarios and a loophole in the models, new models must be updated and streamed into the flink without downtime or redeployments and must have ready to use system. Here is a brief discussion of how we can design such a system.</p>
+
+<h3 id="support-various-types-of-models">
+<a class="anchor" href="#support-various-types-of-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support various types of models</h3>
+
+<p>To build the supporting models and to score these models an offline and an online environment are created. In an offline environment the domain experts are responsible for creating models using tools like Knime and spark. Historic data from the hadoop system can be utilized to update the models. Once the models are trained it can be streamed into Flink. Flink can later score these models in real time against the incoming events. To deploy the models from an offline environment to an online environment, the models have to be persisted for which is achieved by a sustainable environment called Predictive Model Markup Language, often abbreviated as PMML. PMML is an XML based format which enables the models to be saved. PMF files are lightweight and easy to interpret. For example if we were to save a neural network model in a PMF life, all the model parameters would be saved in the file as can be seen in figure1.</p>
+
+<p align="center">
+  <img width="460" height="300" src="images/flink/fig1.png" title="figure1">
+</p>
+
+<p>Most of the tools such as Spark, KNIME, R, python support PMML export mechanisms which open a plethora of options to be implemented.</p>
+
+<p>In the online environment the PMML files are streamed in by KAFKA and they find their way into the control stream’s mobile scoring operator. The OpenScoring.io library in the model scoring operator  then converts the PMML file into a PMML object which exposes it into two functions. The first function passes the input to the model. Typically the inputs are the feature or the feature sets to the model. Once the model is fed the inputs the model is scored which can then be displayed on to the stream.</p>
+
+<p align="center">
+  <img width="460" height="300" src="images/flink/fig2.png" title="figure2">
+</p>
+
+<p>OpenScore.io supports association rules, cluster model, general regression, naive bayes, k nearest neighbor and ensemble models</p>
+
+<h3 id="architecture">
+<a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h3>
+
+<p>This flink system is flexible enough to be deployed in different environments and different geographical locations.<br>
+In most of the flink applications the input data is read from multiple sources into KAFKA, which is later processed and used depending on the use cases and then returned to KAFKA. In fraud detection the input is read from multiple sources such as the online banking application, mobile app, ATMs etc. The input from these sources come in a different datatype taking away the flexibility of processing it. This is overcome by introducing a second flink application known as preprocessor which is basically a technical filter seen in figure3. This preprocessor is majorly concerned with filtering out the events that are not needed by the feature selections and model scoring applications, can classify the raw events and business events and it also consolidates all the events.</p>
+
+<p align="center">
+  <img width="460" height="300" src="images/flink/fig3.png" title="figure3">
+</p>
+
+<h2 id="stateless-to-stateful">
+<a class="anchor" href="#stateless-to-stateful" aria-hidden="true"><span class="octicon octicon-link"></span></a>Stateless to stateful</h2>
+
+<p>When a model is updated the pattern must be stored. The model scoring prepended with the feature extraction is not always guaranteed to have all the required features or information about a transaction.  In this case we must take the previous transactions into consideration. In flick it’s achieved by introducing a state into the application to give the feature extractor a memory which will enable a better feature calculation for the future transactions.  Memory overloading is avoided by storing just enough information required to calculate the feature. Here the model scoring is made efficient by creating a time series of the events which is achieved through updating the state. The model will now recognize the potential fraudulent transactions and create an alert.</p>
+
+<h3 id="stream">
+<a class="anchor" href="#stream" aria-hidden="true"><span class="octicon octicon-link"></span></a>Stream</h3>
+
+<p>Using stateful operators we can enrich a stream. Decisions can be made even if the input is insufficient. The keys in the transaction for examples are enriched by different keys. The input is split and assigned to the task managers. Each key has information related to it stored in different nodes, which is how the keys get enriched. The enriched keys in the cluster are then aggregated on one operator within the cluster. This is done by generating a new key, a random number for each new business event. And the key stream done on those same numbers will end up on the same operator. All the information will come together in the aggregation step, this information can be used to calculate the feature set for all the models and emit them on a stream. Each model looks at the different feature set and makes the decision of alert or ok status.</p>
+
+<h2 id="conclusions">
+<a class="anchor" href="#conclusions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusions</h2>
+
+<p>An end user might not be interested in the internal working of the flink. The user must be able to create a model and save it to a PMS file. But in addition to it the user must define how the feature set must be calculated and must define what data must be persisted since feature calculation is done based on the historic data. In order to enable this a Domain Specific Language is created for the end users for the customers to specify what is required out of flink.<br>
+The system can be extended to send customer notifications in case of fraud transactions or if the balance goes below a certain threshold.</p>
+
+<h2 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+
+<ul>
+  <li>
+    <p><a href="https://flink.apache.org/flink-architecture.html">Reference1</a></p>
+  </li>
+  <li>
+    <p><a href="https://sf-2017.flink-forward.org/index.html%3Fp=1914.html">Reference2</a></p>
+  </li>
+  <li>
+    <p><a href="https://ieeexplore.ieee.org/document/9004318">Reference3</a></p>
+  </li>
+  <li>
+    <p><a href="https://flink.apache.org/news/2020/01/15/demo-fraud-detection.html">Reference4</a></p>
+  </li>
+</ul>
+
+
+  </div><a class="u-url" href="/tuktuk/big%20data/apache/flink/fraud%20detection/2022/05/03/apache-flink.html" hidden></a>
+</article>
+
+      </div>
+    </main><style type="text/css">
+  .div-content {
+    background: linear-gradient(#B7E8EB,#fff);
+  }
+</style>
+<div class="div-content">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="100%" height="25vh" preserveAspectRatio="none" viewBox="0 0 1440 226"><g mask="url(&quot;#SvgjsMask1156&quot;)" fill="none"><path d="M1488 226L0 226 L0 80.26Q68.77 29.04, 120 97.81Q140.79 46.6, 192 67.39Q262.07 17.47, 312 87.54Q388.6 44.13, 432 120.73Q481.76 50.5, 552 100.26Q571.07 47.33, 624 66.4Q654.55 24.95, 696 55.51Q752.63 40.14, 768 96.77Q844.17 52.94, 888 129.11Q914.33 35.44, 1008 61.77Q1085.9 19.67, 1128 97.58Q1164.01 13.59, 1248 49.6Q1320.61 2.21, 1368 74.81Q1434.42 21.23, 1488 87.65z" fill="rgba(37, 70, 125, 1)"></path><path d="M1488 226L0 226 L0 139.63Q51.97 71.6, 120 123.57Q173.91 57.48, 240 111.39Q324.96 76.35, 360 161.31Q378.97 108.28, 432 127.25Q458.43 81.68, 504 108.11Q562.99 95.1, 576 154.09Q627.24 85.32, 696 136.56Q771.65 92.22, 816 167.87Q883.3 115.18, 936 182.48Q971.08 97.56, 1056 132.63Q1122.48 79.11, 1176 145.59Q1222.8 72.39, 1296 119.18Q1362.69 65.87, 1416 132.56Q1463.94 108.5, 1488 156.45z" fill="rgba(53, 108, 177, 1)"></path><path d="M1560 226L0 226 L0 207.84Q25.3 161.14, 72 186.45Q131.51 173.96, 144 233.48Q197.38 166.85, 264 220.23Q311.63 195.87, 336 243.5Q342.56 178.06, 408 184.61Q477.85 134.46, 528 204.31Q548.42 152.74, 600 173.16Q661.22 162.38, 672 223.6Q723.45 155.05, 792 206.5Q849.24 191.74, 864 248.98Q866.61 179.59, 936 182.2Q966.03 140.23, 1008 170.26Q1079.24 121.5, 1128 192.73Q1181.18 173.91, 1200 227.1Q1236.74 143.84, 1320 180.58Q1412.09 152.67, 1440 244.76Q1485.92 170.68, 1560 216.6z" fill="rgba(255, 255, 255, 1)"></path></g><defs><mask id="SvgjsMask1156"><rect width="1440" height="226" fill="#ffffff"></rect></mask></defs></svg>
+</div>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/tuktuk/%20/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+<!--         <p class="feed-subscribe">
+          <a href="/tuktuk/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/tuktuk/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p> -->
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+    <div class="social-links"><ul class="social-media-list"><!---->
+<!---->
+<!----><li><a rel="me" href="https://github.com/archanakalburgi" target="_blank" title="archanakalburgi"><svg class="svg-icon grey"><use xlink:href="/tuktuk/assets/minima-social-icons.svg#github"></use></svg></a></li><!---->
+<!----><li><a rel="me" href="https://www.linkedin.com/in/archana-kalburgi" target="_blank" title="archana-kalburgi"><svg class="svg-icon grey"><use xlink:href="/tuktuk/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><!---->
+<!----><li><a rel="me" href="https://twitter.com/archanakalburgi" target="_blank" title="archanakalburgi"><svg class="svg-icon grey"><use xlink:href="/tuktuk/assets/minima-social-icons.svg#twitter"></use></svg></a></li><!----><li><a rel="me" href="https://www.youtube.com/channel/UCLa8-5kcuDW7grFZWn25O3A" target="_blank" title="YouTube"><svg class="svg-icon grey"><use xlink:href="/tuktuk/assets/minima-social-icons.svg#youtube"></use></svg></a></li><!---->
+<!---->
+<!---->
+<!---->
+</ul>
+</div>
+  </div>
+
+</footer>
+</body>
+
+</html>
