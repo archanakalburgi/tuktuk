@@ -194,7 +194,7 @@ These features make flink a better choice for developing fraud detection applica
 <p>To build the supporting models and to score these models an offline and an online environment are created. In an offline environment the domain experts are responsible for creating models using tools like Knime and spark. Historic data from the hadoop system can be utilized to update the models. Once the models are trained it can be streamed into Flink. Flink can later score these models in real time against the incoming events. To deploy the models from an offline environment to an online environment, the models have to be persisted for which is achieved by a sustainable environment called Predictive Model Markup Language, often abbreviated as PMML. PMML is an XML based format which enables the models to be saved. PMF files are lightweight and easy to interpret. For example if we were to save a neural network model in a PMF life, all the model parameters would be saved in the file as can be seen in figure1.</p>
 
 <p align="center">
-  <img width="460" height="300" src="/tuktuk/images/flink/fig1.png" title="figure1">
+  <img width="550" height="300" src="/tuktuk/images/flink/fig1.png" title="figure1">
 </p>
 
 <p>Most of the tools such as Spark, KNIME, R, python support PMML export mechanisms which open a plethora of options to be implemented.</p>
