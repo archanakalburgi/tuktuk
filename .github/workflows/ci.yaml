@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -26,7 +29,12 @@ jobs:
           tar -xzf rubygems-3.3.22.tgz
           cd rubygems-3.3.22
           ruby setup.rb
-          
+      
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
   check-configurations:
     runs-on: ubuntu-latest
     steps:
@@ -56,9 +64,6 @@ jobs:
       uses: actions/checkout@main
       with:
         persist-credentials: false
-
-    - name: Update RubyGems
-      run: gem update --system 3.3.22
 
     - name: convert notebooks and word docs to posts
       uses: ./_action_files
