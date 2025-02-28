@@ -16,6 +16,12 @@ jobs:
      - name: install dependencies
        run: pip3 install pyyaml
 
+     - name: Debug - Print _config.yml
+       run: cat _config.yml
+
+     - name: Debug - Print settings.ini
+       run: cat _action_files/settings.ini
+
      - name: check baseurl
        id: baseurl
        run: |
@@ -61,7 +67,7 @@ jobs:
        run: |
          import os
          nwo = os.getenv('GITHUB_REPOSITORY')
-         errmsg = "fastpages does not support User Pages or repo names that end with github.io, please see https://forums.fast.ai/t/fastpages-replacing-main-username-github-io-page-w-fastpages/6431[...]
+         errmsg = "fastpages does not support User Pages or repo names that end with github.io, please see https://forums.fast.ai/t/fastpages-replacing-main-username-github-io-page-w-fastpages/643[...]"
          assert ".github.io" not in nwo, errmsg
        shell: python
 
@@ -75,5 +81,5 @@ jobs:
              owner: context.repo.owner,
              repo: context.repo.repo,
              title: "Error with repository configuration: repo name",
-             body: 'fastpages does not support User Pages or repo names that end with github.io, please see https://forums.fast.ai/t/fastpages-replacing-main-username-github-io-page-w-fastpages/643[...]
+             body: 'fastpages does not support User Pages or repo names that end with github.io, please see https://forums.fast.ai/t/fastpages-replacing-main-username-github-io-page-w-fastpages/64[...]
            })
