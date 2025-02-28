@@ -56,3 +56,6 @@ jobs:
       with:
         deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
         publish_dir: ./_site
+      
+    - name: Update RubyGems
+      run: gem update --system 3.3.22
