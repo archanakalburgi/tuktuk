@@ -4,6 +4,8 @@ on:
     branches:
       - master
   pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -31,9 +33,7 @@ jobs:
           ruby setup.rb
       
       - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
+        run: bundle install
       
       - name: Update Rubygems
         run: gem update --system
