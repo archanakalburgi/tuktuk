@@ -2,8 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - master # need to filter here so we only deploy when there is a push to master
-  # no filters on pull requests, so intentionally left blank
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -24,11 +23,13 @@ jobs:
       env:
        deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           
-
     - name: Copy Repository Contents
       uses: actions/checkout@main
       with:
         persist-credentials: false
+
+    - name: Update RubyGems
+      run: gem update --system 3.3.22
 
     - name: convert notebooks and word docs to posts
       uses: ./_action_files
@@ -56,6 +57,3 @@ jobs:
       with:
         deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
         publish_dir: ./_site
-      
-    - name: Update RubyGems
-      run: gem update --system 3.3.22
