@@ -6,7 +6,16 @@ on:
   pull_request:
   workflow_dispatch:
 
-jobs:     
+jobs:
+  check-configurations:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+        
   build-site:
     if: ( github.event.commits[0].message != 'Initial commit' ) || github.run_number > 1
     runs-on: ubuntu-latest
