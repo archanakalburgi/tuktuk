@@ -6,11 +6,12 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - uses: actions/checkout@main
-
+      
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: 3.7
+        python-version: 3.8
+        architecture: x64
 
     - name: install dependencies
       run:  pip3 install pyyaml
