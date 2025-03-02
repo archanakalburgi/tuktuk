@@ -45,6 +45,14 @@ jobs:
         env:
           JEKYLL_ENV: 'production'
 
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin git@github.com:${{ github.repository }}.git
+          git fetch origin
+          git branch -m master gh-pages
+          git push origin gh-pages --force
 
   check-configurations:
     runs-on: ubuntu-latest
