@@ -1,0 +1,112 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install RubyGems manually
+        run: |
+          wget https://rubygems.org/rubygems/rubygems-3.3.22.tgz
+          tar -xzf rubygems-3.3.22.tgz
+          cd rubygems-3.3.22
+          ruby setup.rb
+      
+      - name: Install dependencies
+        run: bundle install
+      
+      - name: Update Rubygems
+        run: gem update --system
+      
+      - name: Jekyll build
+        uses: docker://fastai/fastpages-jekyll
+        with:
+          args: bash -c "gem update --system && jekyll build -V --strict_front_matter --trace"
+        env:
+          JEKYLL_ENV: 'production'
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin git@github.com:${{ github.repository }}.git
+          git fetch origin
+          git branch -m master gh-pages
+          git push origin gh-pages --force  
+
+  check-configurations:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+  build-site:
+    if: ( github.event.commits[0].message != 'Initial commit' ) || github.run_number > 1
+    runs-on: ubuntu-latest
+    steps:
+      
+    - name: Check if secret exists
+      if: github.event_name == 'push'
+      run: |
+        if [ -z "$deploy_key" ]
+        then
+          echo "You do not have a secret named SSH_DEPLOY_KEY.  This means you did not follow the setup instructions carefully.  Please try setting up your repo again with the right secrets."
+          exit 1;
+        fi
+      env:
+       deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
+          
+    - name: Copy Repository Contents
+      uses: actions/checkout@main
+      with:
+        persist-credentials: false
+
+    - name: convert notebooks and word docs to posts
+      uses: ./_action_files
+
+    - name: setup directories for Jekyll build
+      run: |
+        rm -rf _site
+        sudo chmod -R 777 .
+
+    - name: Jekyll build
+      uses: docker://fastai/fastpages-jekyll
+      with:
+        args: bash -c "jekyll build -V --strict_front_matter --trace"
+      env:
+        JEKYLL_ENV: 'production'
+        
+    - name: copy CNAME file into _site if CNAME exists
+      run: |
+        sudo chmod -R 777 _site/
+        cp CNAME _site/ 2>/dev/null || :
+
+    - name: Deploy
+      if: github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
+        publish_dir: ./_site
