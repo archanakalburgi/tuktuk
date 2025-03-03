@@ -1,41 +1,63 @@
-name: Build and Deploy
-
+name: CI
 on:
   push:
-    branches: [main]  
+    branches:
+      - master 
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  pull-requests: write
+  contents: write
+  deployments: write
+  pages: write
+  statuses: write
 
 jobs:
-  build:
+  build-site:
+    if: ( github.event.commits[0].message != 'Initial commit' ) || github.run_number > 1
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Check if secret exists
+        if: github.event_name == 'push'
+        run: |
+          if [ -z "$deploy_key" ]
+          then
+            echo "You do not have a secret named SSH_DEPLOY_KEY.  This means you did not follow the setup instructions carefully.  Please try setting up your repo again with the right secrets."
+            exit 1;
+          fi
+        env:
+          deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Copy Repository Contents
+        uses: actions/checkout@main
         with:
-          node-version: '16'
+          persist-credentials: false
 
-      - name: Install dependencies
-        run: npm install
+      - name: convert notebooks and word docs to posts
+        uses: ./_action_files
 
-      - name: Build project
-        run: npm run build
+      - name: setup directories for Jekyll build
+        run: |
+          rm -rf _site
+          sudo chmod -R 777 .
 
-      - name: Upload production-ready files
-        uses: actions/upload-pages-artifact@v2
+      - name: Jekyll build
+        uses: docker://fastai/fastpages-jekyll
         with:
-          path: ./public  
+          args: bash -c "jekyll build -V --strict_front_matter --trace"
+        env:
+          JEKYLL_ENV: "production"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+      - name: copy CNAME file into _site if CNAME exists
+        run: |
+          sudo chmod -R 777 _site/
+          cp CNAME _site/ 2>/dev/null || :
+
+      - name: Deploy
+        if: github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
+          publish_dir: ./_site
