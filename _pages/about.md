@@ -10,7 +10,7 @@ I am  **Archana Kalburgi**, I graduated from **Stevens Institute of Technology**
 Some interesting projects I have worked on:
 - [Semantic Search Using OpenAI's CLip model](https://github.com/archanakalburgi/Image_Search_OpenAI_Clip)
 - [Profile matcher](https://github.com/archanakalburgi/profile_matcher)
-- [Government policies and public sentiments](https://github.com/archanakalburgi/govt_policies_public_sentiments)
+- [Public sentiments on government policies](https://github.com/archanakalburgi/govt_policies_public_sentiments)
 
 You can reach me out here: 
 [linkedin](https://www.linkedin.com/in/archana-kalburgi/) 
