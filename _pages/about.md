@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 Hi there!!!
-I am  **Archana Kalburgi**, I graduated from **Stevens Institute of Technology**.
+I am  **Archana Kalburgi**.
 
 Some interesting projects I have worked on:
 - [Semantic Search Using OpenAI's CLip model](https://github.com/archanakalburgi/Image_Search_OpenAI_Clip)
