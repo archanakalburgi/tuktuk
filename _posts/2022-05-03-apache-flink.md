@@ -4,7 +4,7 @@ badges: true
 layout: post
 title: Apache Flink 
 description: Dynamic fraud detection by financial institutions using Flink
-date: 2022-05-03
+date: 2022-05-03 01:18:26 +0000
 categories: [Big data, Apache, Flink, Fraud detection] 
 image: images/flink/cover.png
 ---

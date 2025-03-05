@@ -67,6 +67,9 @@ exclude:
   - action.yml
   - Makefile
   - settings.ini
+  - vendor
+  - Gemfile
+  - Gemfile.lock
 
 # this setting allows you to keep pages organized in the _pages folder
 include:
