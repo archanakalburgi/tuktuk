@@ -1,2 +1,1 @@
-# tuktuk.github.io
-Personal blog
+# Personal blog
