@@ -1,8 +1,8 @@
 title: TukTuk
 author: Archana Kalburgi
 email: archanakalburgi@gmail.com
-description: >- 
-  TukTuK, a blog about my personal projects, learnings, and experiences in the world of technology.
+# description: >- 
+#   TukTuK, a blog about my personal projects, learnings, and experiences in the world of technology.
 
 url: "https://archanakalburgi.github.io"
 baseurl: "/tuktuk"
