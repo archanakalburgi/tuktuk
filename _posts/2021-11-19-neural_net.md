@@ -3,11 +3,10 @@ layout: post
 title: Perceptron to Multilayer Neural Network 
 description: In this article I am exploring how we input the data to a neural network.
 date: 2021-11-19 01:18:26 +0000
-image: images/IMG_0440.png
 ---
 
 <p align="center">
-  <img width="500" height="300" src="/images/neural_nets/nn_cover.png">
+  <img width="500" height="300" src="images/IMG_0440.png">
 </p>
 
 In my previous post [Why deep learning?](https://archanakalburgi.github.io/2020/09/21/why-deep-learning.html) I gave reasons why one would choose deep learning algorithms. An explanation of what a deep learning algorithm solves that a machine learning algorithm does not. In this post, I'd like to explore deep learning algorithms and how their input looks like.
