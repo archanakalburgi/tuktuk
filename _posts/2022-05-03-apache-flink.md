@@ -4,8 +4,10 @@ title: Apache Flink
 description: Dynamic fraud detection by financial institutions using Flink
 date: 2022-05-03 01:18:26 +0000
 categories: [Big data, Apache, Flink, Fraud detection] 
-image: images/flink/cover.png
 ---
+<p align="center">
+  <img width="500" height="300" src="images/flink/cover.png">
+</p>
 
 ## Abstract 
 
