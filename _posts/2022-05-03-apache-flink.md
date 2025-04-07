@@ -6,7 +6,7 @@ date: 2022-05-03 01:18:26 +0000
 categories: [Big data, Apache, Flink, Fraud detection] 
 ---
 <p align="center">
-  <img width="500" height="300" src="images/flink/cover.png">
+  <img width="500" height="300" src="/assets/images/flink/cover.png">
 </p>
 
 ## Abstract 
