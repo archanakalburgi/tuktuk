@@ -13,6 +13,13 @@ body {
     margin: 0 auto;
     padding: 1.5rem;
   }
+
+  .site-title a {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #0366d6;
+  }  
   
   /* Header */
   header {
