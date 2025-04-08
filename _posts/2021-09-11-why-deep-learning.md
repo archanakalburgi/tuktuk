@@ -7,7 +7,7 @@ image: images/IMG_0489.png
 ---
 
 <p align="center">
-  <img width="460" height="300" src="{{ site.baseurl }}/assets/images/IMG_0489.png">
+  <img width="460" height="300" src="{{ site.baseurl }}/assets/images/why_deep_learning.png">
 </p>
 
 One of the questions I have been trying to answer is why deep learning algorithms over traditional machine learning algorithms. What can we accomplish with deep learning algorithms that we can't with machine learning algorithms. After reflecting on what I had covered while studying Machine Learning(ML) and what I would cover in a deep learning course I was able to answer the question. 

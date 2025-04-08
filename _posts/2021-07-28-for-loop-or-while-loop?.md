@@ -6,7 +6,7 @@ date: 2021-07-28 01:18:26 +0000
 ---
 
 <p align="center">
-  <img width="460" height="300" src="{{ site.baseurl }}/assets/images/IMG_0441.png">
+  <img width="460" height="300" src="{{ site.baseurl }}/assets/images/for_loop_while_loop.png">
 </p>
 
 - **for loop** is used when you know how many times you want to iterate over an iterable
