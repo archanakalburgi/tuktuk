@@ -34,10 +34,11 @@ body {
 
 /* TukTuk title */
 .site-title {
-  font-family: 'Bungee', cursive;
-  font-size: 3rem;
-  color: #0366d6;
+  font-family: 'Rakkas';
+  font-size: 3.5rem;
+  color: #1976d2;
   text-decoration: none;
+  /* letter-spacing: 0.05em; */
 }
 
 /* Nav links */
