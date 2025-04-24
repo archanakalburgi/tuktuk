@@ -6,11 +6,7 @@ date: 2021-11-19
 image: /assets/images/neural_nets/neural_net.png
 ---
 
-<!-- <p align="center">
-  <img width="500" height="300" src="{{ site.baseurl }}/assets/images/neural_net.png">
-</p> -->
-
-In my previous post [Why deep learning?](https://archanakalburgi.github.io/2020/09/21/why-deep-learning.html) I gave reasons why one would choose deep learning algorithms. An explanation of what a deep learning algorithm solves that a machine learning algorithm does not. In this post, I'd like to explore deep learning algorithms and how their input looks like.
+In my previous post [Why deep learning?](https://archanakalburgi.github.io/tuktuk/2021/09/21/why-deep-learning.html) I gave reasons why one would choose deep learning algorithms. An explanation of what a deep learning algorithm solves that a machine learning algorithm does not. In this post, I'd like to explore deep learning algorithms and how their input looks like.
 
 Learning about linear models is essential to understanding neural networks and how do we visualize this type of model?
 
@@ -44,7 +40,6 @@ The above cannot be multiplied since they are incompatible. You can handle this 
 </p>
 
 The above system of equation can be abstracted as follows 
-<!-- <img src="https://render.githubusercontent.com/render/math?math=Z=WX^T%2Bb"> -->
 In the linear model, the data points are separated by hyperplanes, which is given by the formula:
 
 <div style="text-align:center">
