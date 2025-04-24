@@ -2,12 +2,13 @@
 layout: post
 title:  "Choosing the loops!"
 description: A short article explaining how one can choose what loop to use during programming.
-date: 2021-07-28 01:18:26 +0000
+date: 2021-07-28 01:18:26 +0000 
+image: /assets/images/for_loop_while_loop.png
 ---
-
+<!-- 
 <p align="center">
   <img width="460" height="300" src="{{ site.baseurl }}/assets/images/for_loop_while_loop.png">
-</p>
+</p> -->
 
 - **for loop** is used when you know how many times you want to iterate over an iterable
 - the counter that keep keeps the track of number of times you have iterated over something is incremented or decremented until a condition is met

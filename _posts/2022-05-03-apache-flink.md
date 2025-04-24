@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Apache Flink 
-description: Dynamic fraud detection by financial institutions using Flink
+# description: Dynamic fraud detection by financial institutions using Flink
+description: Explores how Apache Flink powers real-time fraud detection in financial systems through dynamic model updates, stateful stream processing, and scalable architecture.
 date: 2022-05-03 01:18:26 +0000
 categories: [Big data, Apache, Flink, Fraud detection] 
+image: /assets/images/flink/cover.png
 ---
-<p align="center">
-  <img src="{{ site.baseurl }}/assets/images/flink/cover.png" width="500" height="300">
-</p>
+  <!-- <p align="center">
+    <img src="{{ site.baseurl }}/assets/images/flink/cover.png" width="500" height="300">
+  </p> -->
 
 ## Abstract 
 
@@ -55,7 +57,7 @@ A fraud detection system must be able to support various types of machine learni
 To build the supporting models and to score these models an offline and an online environment are created. In an offline environment the domain experts are responsible for creating models using tools like Knime and spark. Historic data from the hadoop system can be utilized to update the models. Once the models are trained it can be streamed into Flink. Flink can later score these models in real time against the incoming events. To deploy the models from an offline environment to an online environment, the models have to be persisted for which is achieved by a sustainable environment called Predictive Model Markup Language, often abbreviated as PMML. PMML is an XML based format which enables the models to be saved. PMF files are lightweight and easy to interpret. For example if we were to save a neural network model in a PMF life, all the model parameters would be saved in the file as can be seen in figure1.
 
 <p align="center">
-  <img width="550" height="300" src="/tuktuk/images/flink/fig1.png" title="figure1">
+  <img width="550" height="300" src="{{ site.baseurl }}/assets/images/flink/fig1.png" title="figure1">
 </p>
 
 Most of the tools such as Spark, KNIME, R, python support PMML export mechanisms which open a plethora of options to be implemented.
@@ -63,7 +65,7 @@ Most of the tools such as Spark, KNIME, R, python support PMML export mechanisms
 In the online environment the PMML files are streamed in by KAFKA and they find their way into the control stream’s mobile scoring operator. The OpenScoring.io library in the model scoring operator  then converts the PMML file into a PMML object which exposes it into two functions. The first function passes the input to the model. Typically the inputs are the feature or the feature sets to the model. Once the model is fed the inputs the model is scored which can then be displayed on to the stream.
 
 <p align="center">
-  <img width="460" height="300" src= "/tuktuk/images/flink/fig2.png" title="figure2">
+  <img width="460" height="300" src= "{{ site.baseurl }}/assets/images/flink/fig2.png" title="figure2">
 </p>
 
 OpenScore.io supports association rules, cluster model, general regression, naive bayes, k nearest neighbor and ensemble models 
@@ -74,7 +76,7 @@ This flink system is flexible enough to be deployed in different environments an
 In most of the flink applications the input data is read from multiple sources into KAFKA, which is later processed and used depending on the use cases and then returned to KAFKA. In fraud detection the input is read from multiple sources such as the online banking application, mobile app, ATMs etc. The input from these sources come in a different datatype taking away the flexibility of processing it. This is overcome by introducing a second flink application known as preprocessor which is basically a technical filter seen in figure3. This preprocessor is majorly concerned with filtering out the events that are not needed by the feature selections and model scoring applications, can classify the raw events and business events and it also consolidates all the events. 
 
 <p align="center">
-  <img width="460" height="300" src="/tuktuk/images/flink/fig3.png" title="figure3">
+  <img width="460" height="300" src="{{ site.baseurl }}/assets/images/flink/fig3.png" title="figure3">
 </p>
 
 ## Stateless to stateful 

@@ -1,6 +1,3 @@
-/* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-
 /* Base styles */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -36,9 +33,8 @@ body {
 .site-title {
   font-family: 'Rakkas';
   font-size: 3.5rem;
-  color: #1976d2;
+  color: #3b8ee2;
   text-decoration: none;
-  /* letter-spacing: 0.05em; */
 }
 
 /* Nav links */
@@ -86,4 +82,127 @@ footer {
   padding: 1rem 0;
   border-top: 1px solid #eee;
   margin-top: 2rem;
+}
+
+/* Post styles */
+.post-preview img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.post-image {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.post-title a {
+  text-decoration: underline;
+  color: #0366d6;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-description {
+  text-align: center;
+  margin: 0.3rem auto 1rem;
+  color: #444;
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+/* Grid layout */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.post-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.post-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.post-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #1976d2;
+}
+
+.post-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.grid-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+}
+
+body {
+  background-color: #ecf4fb;
+  color: #2c3e50;
+}
+
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 2px solid #3498db;
+}
+
+.nav-links a {
+  color: #2c3e50;
+}
+
+.nav-links a:hover {
+  color: #3498db;
+}
+
+.post-card {
+  background-color: #ffffff;
+  border: 1px solid #dce4ec;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+
+.post-title a {
+  color: #3498db;
+}
+
+.post-description {
+  color: #2c3e50;
 }
