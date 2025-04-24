@@ -3,7 +3,7 @@ layout: post
 title: Perceptron to MNN
 description: A walkthrough from perceptrons to multilayer neural networks, explaining linear models, equations, and how input data is structured for deep learning.
 date: 2021-11-19
-image: /assets/images/neural_nets/neural_net.png
+image: /assets/images/neural_nets/neural_nets_cover.png
 ---
 
 In my previous post [Why deep learning?](https://archanakalburgi.github.io/tuktuk/2021/09/21/why-deep-learning.html) I gave reasons why one would choose deep learning algorithms. An explanation of what a deep learning algorithm solves that a machine learning algorithm does not. In this post, I'd like to explore deep learning algorithms and how their input looks like.
