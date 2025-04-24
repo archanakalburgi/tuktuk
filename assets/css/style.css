@@ -206,3 +206,16 @@ body {
 .post-description {
   color: #2c3e50;
 }
+
+.post-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.post-card-link:hover .post-card {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(60, 80, 40, 0.15);
+}
+

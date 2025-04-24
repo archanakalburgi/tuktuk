@@ -3,18 +3,16 @@ layout: default
 title: Home
 ---
 
-<!-- <h2 class="grid-heading">Posts</h2> -->
-
 <div class="post-grid">
   {% for post in site.posts %}
-    <div class="post-card">
-      <h3 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-      {% if post.image %}
-        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-      {% endif %}
-      <p class="post-description">{{ post.description }}</p>
-    </div>
+    <a href="{{ post.url | relative_url }}" class="post-card-link">
+      <div class="post-card">
+        <h3 class="post-title">{{ post.title }}</h3>
+        {% if post.image %}
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        {% endif %}
+        <p class="post-description">{{ post.description }}</p>
+      </div>
+    </a>
   {% endfor %}
 </div>
