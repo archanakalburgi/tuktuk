@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<main class="container post-content">
+  <!-- Blog post title -->
+  <header>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <!-- Optional publish date -->
+  {% if page.date %}
+    <p style="text-align: center; color: #888; font-size: 0.9rem;">
+      {{ page.date | date: "%B %e, %Y" }}
+    </p>
+  {% endif %}
+
+  <!-- Main content -->
+  <article>
+    {{ content }}
+  </article>
+</main>
+
+<!-- <footer class="post-footer">
+  <p>Views: <span id="post-views">...</span></p>
+</footer>
+
+<script>
+  const key = encodeURIComponent("{{ page.url }}");
+  fetch(`https://api.countapi.xyz/hit/tuktuk-blog${key}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("post-views").innerText = data.value;
+    });
+</script> -->

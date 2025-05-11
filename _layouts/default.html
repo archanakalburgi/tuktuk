@@ -5,11 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- <title>{{ page.title }}  TukTuk</title> -->
   <title>{% if page.url == "/" or page.url == "/tuktuk/" %}TukTuk{% else %}{{ page.title }} | TukTuk{% endif %}</title>
 
   <!-- Font + Styles -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
@@ -17,7 +15,7 @@
   <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.ico" type="image/x-icon">
 </head>
 
-<body>
+<body class="{% if page.url == '/' or page.url == '/tuktuk/' %}landing{% endif %}">
   <!-- HEADER -->
   <header class="site-header">
     <div class="nav-container">
@@ -36,7 +34,7 @@
 
   <!-- FOOTER -->
   <footer class="container">
-    <p>&copy; {{ site.time | date: "%Y" }} TukTuk. All rights reserved.</p>
+    <p>&copy; {{ site.time | date: "%Y" }} TukTuk</p>
   </footer>
 </body>
 </html>
@@ -44,4 +42,3 @@
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-
