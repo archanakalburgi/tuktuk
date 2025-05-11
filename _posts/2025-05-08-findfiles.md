@@ -136,7 +136,7 @@ The system will respond with:
 - Receipts
 - Deduction summaries
 
-And returnd their path. Each file will be selected semantically and grouped as part of a complete response.
+And return their path. Each file will be selected semantically and grouped as part of a complete response.
 
 Enhancements on the roadmap include:
 – Building intelligence to extract task-specific insights (e.g., understanding what’s required to file taxes)
