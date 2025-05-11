@@ -4,8 +4,12 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #ecf4fb;
+  background-color: #ffffff;
   color: #2c3e50;
+}
+
+body.landing {
+  background-color: #ecf4fb;
 }
 
 .container {
@@ -54,8 +58,16 @@ main {
   padding-bottom: 2rem;
 }
 
-h1, h2, h3 {
-  color: #333;
+h1{
+  color:#5fa1e3;
+}
+
+h2 {
+  color:#3d8ad7;
+}
+
+h3 {
+  color:#3076bb;
 }
 
 a {
@@ -93,7 +105,6 @@ footer {
   padding: 0 1rem;
 }
 
-/* Post card link wrapper */
 .post-card-link {
   display: block;
   text-decoration: none;
@@ -106,7 +117,6 @@ footer {
   box-shadow: 0 4px 10px rgba(60, 80, 40, 0.15);
 }
 
-/* Post card */
 .post-card {
   background-color: #ffffff;
   border: 1px solid #dce4ec;
@@ -133,24 +143,24 @@ footer {
   color: #1976d2;
 }
 
-/* Post title */
-.post-title {
-  text-align: center;
-  margin-bottom: 0.5rem;
+.post-card h3 a {
+  text-decoration: none;
+  color: #1976d2;
 }
 
-.post-title a {
-  color: #3498db;
-  font-size: 1.6rem;
+/* Post metadata */
+.post-title {
+  text-align: center;
+  font-size: 2rem;
   font-weight: bold;
-  text-decoration: underline;
+  color: #125aacc7;
+  text-decoration: none;
 }
 
 .post-title a:hover {
   text-decoration: none;
 }
 
-/* Post description */
 .post-description {
   text-align: center;
   margin: 0.3rem auto 1rem;
@@ -159,13 +169,51 @@ footer {
   max-width: 600px;
 }
 
-/* 🔒 Prevent underline on links inside description */
 .post-description a {
   text-decoration: none;
   color: #3498db;
 }
 
 .post-description a:hover {
-  text-decoration: none;
   color: #1f6fb2;
+}
+
+/* Code blocks - clean, one-layer box */
+.highlight {
+  background: none !important;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.highlight pre {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  border: 1px solid #ddd;
+}
+
+.highlight pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Inline code */
+.post-content code {
+  background-color: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 1px solid #e1e1e1;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95em;
+  color: #090909;
 }

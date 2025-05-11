@@ -9,11 +9,10 @@ title: Home
       <div class="post-card">
         <h3 class="post-title">{{ post.title }}</h3>
         {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image">
         {% endif %}
         <p class="post-description">{{ post.description }}</p>
       </div>
     </a>
   {% endfor %}
 </div>
-
