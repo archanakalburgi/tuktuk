@@ -21,3 +21,5 @@ minima:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+permalink: /:year/:month/:day/:title.html
