@@ -2,6 +2,8 @@
 layout: post
 title: Semantic File Search with LangChain and Chroma
 date: 2025-05-08 10:20:26 +0000
+categories: [semantic-search]
+tags: [langchain, chroma, embeddings, watchdog, openai, cli]
 description: A walkthrough of a semantic file search assistant that indexes local documents and enables intelligent retrieval using vector embeddings. 
 image: /assets/images/findfiles.png
 ---
