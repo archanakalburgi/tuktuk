@@ -6,104 +6,50 @@ description: A walkthrough of a semantic file search assistant that indexes loca
 image: /assets/images/findfiles.png
 ---
 
-## Introduction
 
-While traditional file systems excel at storage and organization, they often fall short when it comes to understanding and surfacing relevant content based on user intent.
+This project enables semantic search over the local file system using OpenAI embeddings, Chroma database and LangChain. It continuously monitors directories, embeds content, and surfaces relevant information in real time when quired.
 
-This project introduces a modular, Python-based pipeline to convert a monitored folder into a semantically searchable index using LangChain, OpenAI embeddings, and the Chroma vector database.
+The design covers key architectural components and their responsibilities, details how new files are automatically processed and indexed, and includes a CLI for real-time search and file discovery. It also lays the groundwork for building document assistants using Retrieval-Augmented Generation (RAG), capable of understanding user intent across multiple documents.
 
-This blog details:
-- The architectural components and their responsibilities
-- How the system processes new files automatically
-- A CLI for real-time search and file discovery
-- Implementation design principles like separation of concerns
-
-While also outlining how this system serves as a launchpad for more intelligent document assistants using Retrieval-Augmented Generation (RAG).
+---
 
 ## Why Semantic Search for Local Files?
 
-Many of us including organizations face challenges in information retrieval due to:
-- Inconsistent or missing metadata
-- Content distributed across local and network drives
-- Difficulty in locating documents through traditional keyword search
+Information retrieval remains a challenge, often due to inconsistent or missing metadata, fragmented storage across local and network drives, and the limitations of traditional keyword-based search.
 
-By converting documents into vector embeddings via OpenAI models and indexing them in Chroma, the system supports semantic search, improving retrieval over traditional string-based lookup.
+This system addresses those challenges by converting documents into vector embeddings using OpenAI models and indexing them in Chroma, enabling semantic search that retrieves content based on meaning rather than exact string matches.
+
+---
 
 ## System Architecture
-
-The project is divided into modular components:
-
-- **monitoring.py**: \
-  - Sets up a `Watchdog` observer to monitor a specified directory for file system events. Detects new file creations and deletions and triggers appropriate processing or cleanup in real-time.
-- **file_handler.py**: \
-  - Handles file-level processing. Extracts text content from PDFs using `PyMuPDFLoader`, splits the text into overlapping chunks with `RecursiveCharacterTextSplitter`, generates OpenAI embeddings, and stores them in the Chroma vector store with associated metadata.
-- **store.py**: \
-  - Initializes the Chroma vector database with OpenAI embedding functions. Provides methods to interact with the vector store, including document insertion and document-level deletion based on file path metadata.
-- **utils.py**: \
-  - Provides utility functions to validate directory paths and perform batch preprocessing of all existing PDF files in a given directory, ensuring they are indexed in the vector store prior to monitoring.
-- **main.py**: \
-  - Serves as the entry point for the CLI application. Initializes the vector store, processes existing files, starts the folder monitoring observer, and manages user input for semantic search and new file processing.
-
-This sepration of concerns ensures testability, reusability, and the ability to plug this into larger pipelines (e.g., Slack bots, dashboards, APIs).
-
-### Architecture Flow:
 
 <p align="center">
  <img width="600" height="400" src="{{ site.baseurl }}/assets/images/findfiles_architecture.png">
 </p>
+
+The project is divided into modular components:
+
+**Watchdog (File Event Observer)**
+- Sets up a Watchdog observer to monitor the directory in real time.
+- it detects add and delete events. 
+  - On add: it extracts, splits, embeds, and stores the file's contents in Chroma.
+  - On delete: it removes the corresponding vector entries from Chroma.
+
+**PDF Processor**
+- Triggered when a new file is added.
+- Responsible for loading PDFs using `PyMuPDFLoader` spliting text using `RecursiveCharacterTextSplitter`
+- It converts these chunks into embeddings using OpenAI and passes `{embeddings, metadata}` to Chroma for indexing
+
+**Vector Store Interface**
+- Wraps the Chroma vector database and initializes it with OpenAI embeddings
+- it handles embedding new files that are added and removes by file path 
+Used by both the PDF Processor and the Watchdog for storage operations.
+
+**CLI Interface & System Orchestrator (main.py) in two points**
+- Initializes the semantic search by validating the target directory, processing and embedding existing PDF files, and launches a Watchdog observer to monitor real-time file system events.
+- Provides a command-line interface that accepts user queries, performs vector-based semantic search using Chroma's similarity search and returns the most relevant file path for discovery.
+
 ---
-
-## Step-by-Step Breakdown
-
-### 1. Initialize the Vector Store
-```python
-from vector_store.store import initialize_vector_store
-vector_store = initialize_vector_store()
-```
-
-This sets up OpenAI embeddings and the Chroma vector database. Embeddings are tagged with file metadata (`file_path`).
-
-### 2. Start Monitoring Folder
-```python
-observer, file_event_handler = start_monitoring(directory, vector_store)
-process_existing_files(directory, vector_store)
-```
-
-New PDF files are detected using Watchdog, queued, and automatically processed.
-
-### 3. Text Extraction & Chunking
-```python
-loader = PyMuPDFLoader(file_path)
-docs = loader.load()
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-splits = splitter.split_documents(docs)
-```
-
-Text is split into overlapping chunks to improve retrieval quality.
-
-### 4. Add to Chroma
-```python
-vector_store.add_texts(
-  texts=[doc.page_content for doc in splits],
-  metadatas=[{"file_path": file_path}] * len(splits)
-)
-```
-
-Each chunk is stored in Chroma with associated metadata, enabling semantic similarity search.
-
-### 5. Run a Search Query
-```python
-results = vector_store.similarity_search(query="documents for NY tax filing", k=1)
-```
-
-Results return the best matching documents, based on the embedded meaning of the query.
-
-### 6. Handle Deletions
-```python
-vector_store.delete_document("/path/to/file.pdf")
-```
-
-When a file is deleted from the folder, its embeddings are also removed.
 
 ## CLI Interaction Sample
 ```
@@ -119,6 +65,7 @@ What would you like to do?
 Enter your search query: file to file tax in NY
 Matching file found: /path/to/folder/W2_2024.pdf
 ```
+---
 
 ## What's Next
 
@@ -139,6 +86,8 @@ And return their path. Each file will be selected semantically and grouped as pa
 Enhancements on the roadmap include:
 – Building intelligence to extract task-specific insights (e.g., understanding what’s required to file taxes)
 – Expanding support for additional file types beyond PDFs
+
+---
 
 ## Conclusion
 
