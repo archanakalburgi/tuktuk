@@ -84,8 +84,8 @@ The system will respond with:
 And return their path. Each file will be selected semantically and grouped as part of a complete response.
 
 This includes:
-– Building intelligence to extract task-specific insights (e.g., understanding what’s required to file taxes)
-– Expanding support for additional file types beyond PDFs
+- Building intelligence to extract task-specific insights (e.g., understanding what’s required to file taxes)
+- Expanding support for additional file types beyond PDFs
 
 ---
 
