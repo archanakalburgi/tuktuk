@@ -83,7 +83,7 @@ The system will respond with:
 
 And return their path. Each file will be selected semantically and grouped as part of a complete response.
 
-Enhancements on the roadmap include:
+This includes:
 – Building intelligence to extract task-specific insights (e.g., understanding what’s required to file taxes)
 – Expanding support for additional file types beyond PDFs
 
@@ -94,3 +94,5 @@ Enhancements on the roadmap include:
 This system enables real-time semantic search over local documents using LangChain, Chroma, and OpenAI embeddings. It automatically indexes new PDFs and supports natural language querying through a command-line interface.
 
 Future iterations will incorporate multi-file reasoning and natural language generation, transforming this utility into a more advanced tool for file discovery and task-specific document retrieval.
+
+GitHub repo [here](https://github.com/archanakalburgi/findfiles) 
