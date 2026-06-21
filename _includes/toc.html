@@ -1,0 +1,24 @@
+{%- comment -%}
+  Lightweight Liquid-based TOC for kramdown headings.
+  Renders h2 + h3 from page.content. No plugin needed.
+{%- endcomment -%}
+{%- assign headings = include.content | split: '<h2' -%}
+{%- if headings.size > 1 -%}
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc__title">~ on this page</div>
+  <ul>
+    {%- for chunk in headings offset: 1 -%}
+      {%- assign rest = chunk | split: '</h2>' | first -%}
+      {%- assign id_chunk = rest | split: 'id="' | last -%}
+      {%- assign h2_id = id_chunk | split: '"' | first -%}
+      {%- assign text_chunk = rest | split: '>' | last -%}
+      {%- assign h2_text = text_chunk | strip_html | strip -%}
+      {%- if h2_text != "" and h2_id != rest -%}
+      <li>
+        <a href="#{{ h2_id }}">{{ h2_text }}</a>
+      </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</aside>
+{%- endif -%}

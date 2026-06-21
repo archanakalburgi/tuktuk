@@ -1,0 +1,48 @@
+// Rouge syntax highlighting — github-dark inspired, theme-aware via tokens.
+
+.highlight pre,
+pre.highlight {
+  background: var(--bg-elev);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.highlight {
+  background: transparent;
+  border-radius: var(--radius);
+  margin: var(--space-5) 0;
+}
+
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs, .highlight .cd { color: var(--muted); font-style: italic; }
+.highlight .err { color: #ff6b6b; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { color: #ff7b72; }
+.highlight .o { color: var(--accent-3); }
+.highlight .p { color: var(--fg); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss { color: #a5d6ff; }
+.highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .m { color: var(--accent-3); }
+.highlight .nf, .highlight .nx { color: #d2a8ff; }
+.highlight .nb { color: var(--accent-2); }
+.highlight .nc, .highlight .nn, .highlight .ne { color: var(--accent); }
+.highlight .na { color: #79c0ff; }
+.highlight .nt { color: var(--accent); }
+.highlight .nv, .highlight .vi { color: #ffa657; }
+.highlight .gd { color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+.highlight .gi { color: var(--accent); background: rgba(126, 231, 135, 0.1); }
+.highlight .gh, .highlight .gu { color: var(--accent-2); font-weight: 600; }
+
+[data-theme="light"] .highlight .c,
+[data-theme="light"] .highlight .cm,
+[data-theme="light"] .highlight .c1 { color: #6e7781; }
+[data-theme="light"] .highlight .k { color: #cf222e; }
+[data-theme="light"] .highlight .s,
+[data-theme="light"] .highlight .s1,
+[data-theme="light"] .highlight .s2 { color: #0a3069; }
+[data-theme="light"] .highlight .nf,
+[data-theme="light"] .highlight .nx { color: #8250df; }
+[data-theme="light"] .highlight .mi { color: #0550ae; }
+[data-theme="light"] .highlight .nc { color: var(--accent); }

@@ -1,23 +1,39 @@
 <header class="site-header">
-    <div class="wrapper">
-      {%- assign default_paths = site.pages | map: "path" -%}
-      {%- assign page_paths = site.minima.nav_pages | default: default_paths -%}
-      {%- assign page_titles = site.pages | map: 'title' | compact %}
-  
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
-  
-      <nav class="site-nav">
-        <!-- External link shown always -->
-        <a class="page-link" href="https://archanakalburgi.github.io/code_challenges/">Code Challenges</a>
-  
-        {%- unless page_titles == empty %}
-          <input type="checkbox" id="nav-trigger" />
-          <label for="nav-trigger">
-            <span class="menu-icon"></span>
-          </label>
-  
-          {% include nav-items.html paths = page_paths %}
-        {%- endunless %}
-      </nav>
-    </div>
-  </header>
+  <div class="container site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}">
+      archana<span class="site-brand__prompt" aria-hidden="true">.</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </label>
+
+      <div class="site-nav__links">
+        {%- for item in site.data.nav -%}
+          {%- assign url = item.url | relative_url -%}
+          {%- assign current = false -%}
+          {%- if page.url == item.url or page.url contains item.url -%}
+            {%- assign current = true -%}
+          {%- endif -%}
+          <a href="{{ url }}"{% if current %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- endfor -%}
+
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>

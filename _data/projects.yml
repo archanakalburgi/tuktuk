@@ -1,0 +1,17 @@
+- name: findfiles
+  blurb: Semantic search over local files using OpenAI embeddings, Chroma, and LangChain.
+  tags: [langchain, rag, embeddings]
+  url: https://github.com/archanakalburgi/findfiles
+  featured: true
+
+- name: code_challenges
+  blurb: Algorithm and data-structure problems worked through in Python and Go.
+  tags: [algorithms, python, go]
+  url: https://archanakalburgi.github.io/code_challenges/
+  featured: true
+
+- name: tuktuk
+  blurb: This site. Jekyll, hand-rolled SCSS, no framework.
+  tags: [jekyll, sass]
+  url: https://github.com/archanakalburgi/tuktuk
+  featured: true

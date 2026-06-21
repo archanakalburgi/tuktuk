@@ -1,0 +1,12 @@
+<section class="intro" aria-label="Introduction">
+  <p class="intro__greeting">Hi, I'm</p>
+  <h1 class="intro__name">Archana Kalburgi</h1>
+  <p class="intro__tagline">Data engineer with a graduate background in machine learning. This is where I share the fun projects I build outside of work.</p>
+  <div class="intro__links">
+    {%- for s in site.data.social -%}
+      {%- assign href = s.url -%}
+      {%- if s.url contains '/feed' -%}{%- assign href = s.url | relative_url -%}{%- endif -%}
+      <a href="{{ href }}"{% unless s.url contains 'mailto' or s.url contains '/feed' %} target="_blank" rel="noopener"{% endunless %}>{{ s.name }}</a>
+    {%- endfor -%}
+  </div>
+</section>

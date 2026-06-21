@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<header class="post__header">
+  <div class="post__breadcrumb"><span class="prompt">$</span>ls ~/archana/posts/</div>
+  <h1 class="post__title">{{ page.title }}</h1>
+  {%- if page.subtitle -%}
+    <div class="post__meta"><span>{{ page.subtitle }}</span></div>
+  {%- endif -%}
+</header>
+
+{%- assign all_tags = '' | split: '' -%}
+{%- for post in site.posts -%}
+  {%- for t in post.tags -%}
+    {%- unless all_tags contains t -%}
+      {%- assign all_tags = all_tags | push: t -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign all_tags = all_tags | sort -%}
+
+<div class="search" id="archive-search">
+  <label class="search__input-wrap" for="q">
+    <span class="search__prompt" aria-hidden="true">&gt;</span>
+    <input type="search" id="q" class="search__input" placeholder="search title, description, content…" autocomplete="off">
+  </label>
+  <div class="search__filters">
+    <span class="search__filters-label">tags:</span>
+    <button type="button" class="tag tag--filter tag--active" data-tag="all">all</button>
+    {%- for t in all_tags -%}
+      <button type="button" class="tag tag--filter" data-tag="{{ t }}">{{ t }}</button>
+    {%- endfor -%}
+  </div>
+</div>
+
+<div class="search__count" id="search-count">{{ site.posts.size }} posts</div>
+
+<ul class="post-list" id="post-list">
+  {%- for post in site.posts -%}
+    {% include post-card.html post=post %}
+  {%- endfor -%}
+</ul>
+
+<div class="empty" id="empty-state" hidden>
+  <span class="prompt" style="color: var(--accent);">$</span> no posts match — try a different filter.
+</div>
+
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js" defer></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>

@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>&copy; {{ site.time | date: "%Y" }} {{ site.author | downcase }} · built with jekyll</span>
+    <div class="site-footer__links">
+      {%- for s in site.data.social -%}
+        {%- assign href = s.url -%}
+        {%- if s.url contains '/feed' -%}{%- assign href = s.url | relative_url -%}{%- endif -%}
+        <a href="{{ href }}"{% unless s.url contains 'mailto' or s.url contains '/feed' %} target="_blank" rel="noopener"{% endunless %}>{{ s.label | downcase }}</a>
+      {%- endfor -%}
+    </div>
+  </div>
+</footer>

@@ -1,18 +1,4 @@
 ---
-layout: default
-title: Home
+layout: home
+title: home
 ---
-
-<div class="post-grid">
-  {% for post in site.posts %}
-    <a href="{{ post.url | relative_url }}" class="post-card-link">
-      <div class="post-card">
-        <h3 class="post-title">{{ post.title }}</h3>
-        {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image">
-        {% endif %}
-        <p class="post-description">{{ post.description }}</p>
-      </div>
-    </a>
-  {% endfor %}
-</div>

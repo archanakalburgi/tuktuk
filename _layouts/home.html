@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+{% include hero.html %}
+
+<section class="section reveal" aria-labelledby="latest-heading">
+  <div class="section__head">
+    <span id="latest-heading">Latest writing</span>
+    <a href="{{ '/posts/' | relative_url }}">see all →</a>
+  </div>
+  <ul class="post-list">
+    {%- assign latest = site.posts | slice: 0, 3 -%}
+    {%- for post in latest -%}
+      {% include post-card.html post=post %}
+    {%- endfor -%}
+  </ul>
+</section>
+
+<section class="section reveal" aria-labelledby="projects-heading">
+  <div class="section__head">
+    <span id="projects-heading">Projects</span>
+    <a href="{{ '/projects/' | relative_url }}">all projects →</a>
+  </div>
+  <div class="project-grid">
+    {%- for proj in site.data.projects -%}
+      {%- if proj.featured -%}
+      <a class="project-card" href="{{ proj.url }}"{% unless proj.url contains site.url %} target="_blank" rel="noopener"{% endunless %}>
+        <div class="project-card__name">{{ proj.name }}</div>
+        <p class="project-card__blurb">{{ proj.blurb }}</p>
+        <div class="tags">
+          {%- for t in proj.tags -%}<span class="tag">{{ t }}</span>{%- endfor -%}
+        </div>
+        <span class="project-card__cta">view →</span>
+      </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{{ content }}
