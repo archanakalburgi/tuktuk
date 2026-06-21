@@ -1,0 +1,4 @@
+{%- comment -%}
+  Renders a filterable tag chip. Usage: {% include tag-chip.html tag="ai" %}
+{%- endcomment -%}
+<button type="button" class="tag tag--filter" data-tag="{{ include.tag }}">{{ include.tag }}</button>

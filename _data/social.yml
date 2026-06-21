@@ -1,0 +1,15 @@
+- name: github
+  url: https://github.com/archanakalburgi
+  label: GitHub
+
+- name: linkedin
+  url: https://www.linkedin.com/in/archana-kalburgi/
+  label: LinkedIn
+
+- name: email
+  url: mailto:archanakalburgi@gmail.com
+  label: Email
+
+- name: rss
+  url: /feed.xml
+  label: RSS

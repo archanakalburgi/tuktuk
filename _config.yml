@@ -1,25 +1,43 @@
-title: TukTuk
+title: archana kalburgi
+tagline: ml engineer · notes from the terminal
 author: Archana Kalburgi
 email: archanakalburgi@gmail.com
-# description: >- 
-#   TukTuK, a blog about my personal projects, learnings, and experiences in the world of technology.
+description: >-
+  Writing about machine learning, systems, and the messy middle
+  where ideas meet data.
 
 url: "https://archanakalburgi.github.io"
 baseurl: "/tuktuk"
 
-theme: minima
+permalink: /:year/:month/:day/:title.html
 
-# Enable blog features  
 show_excerpts: true
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  toc_levels: 2..3
+  auto_ids: true
 
-# Optional: Add a navigation menu
-minima:
-  social_links:
-    - { platform: github, 
-        user_url: "https://github.com/archanakalburgi" }
+sass:
+  style: compressed
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-permalink: /:year/:month/:day/:title.html
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      toc: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
+  - .jekyll-cache

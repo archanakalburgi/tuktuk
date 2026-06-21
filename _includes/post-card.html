@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renders a post row. Usage: {% include post-card.html post=post %}
+{%- endcomment -%}
+{%- assign p = include.post -%}
+<li class="post-row" data-tags="{{ p.tags | join: ' ' }}" data-title="{{ p.title | downcase }}" data-search="{{ p.title | append: ' ' | append: p.description | downcase | strip_newlines }}">
+  <a class="post-row__link" href="{{ p.url | relative_url }}">
+    <div class="post-row__meta">
+      <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %e, %Y" }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{% include reading-time.html content=p.content %}</span>
+    </div>
+    <h3 class="post-row__title">{{ p.title }}</h3>
+    {%- if p.description -%}
+      <p class="post-row__desc">{{ p.description }}</p>
+    {%- endif -%}
+  </a>
+</li>

@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div>
+    <header class="post__header">
+      <div class="post__breadcrumb"><span class="prompt">$</span>cat ~/archana/{{ page.title | downcase }}.md</div>
+      <h1 class="post__title">{{ page.title }}</h1>
+      {%- if page.subtitle -%}
+        <div class="post__meta"><span>{{ page.subtitle }}</span></div>
+      {%- endif -%}
+    </header>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</article>

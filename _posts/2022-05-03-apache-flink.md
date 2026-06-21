@@ -3,8 +3,8 @@ layout: post
 title: Apache Flink 
 description: Explores how Apache Flink powers real-time fraud detection in financial systems through dynamic model updates, stateful stream processing, and scalable architecture.
 date: 2022-05-03 01:18:26 +0000
-categories: [Big data, Apache, Flink, Fraud detection] 
 image: /assets/images/flink/cover.png
+tags: [big-data, streaming, flink]
 ---
 
 ## Abstract 

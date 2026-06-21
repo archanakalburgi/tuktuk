@@ -4,6 +4,7 @@ title:  "Choosing the loops!"
 description: A short article explaining how one can choose what loop to use during programming.
 date: 2021-07-28 01:18:26 +0000 
 image: /assets/images/for_loop_while_loop.png
+tags: [programming, fundamentals]
 ---
 
 - **for loop** is used when you know how many times you want to iterate over an iterable
